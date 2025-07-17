@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>ponto de horario</title>
+  </head>
+  <body>
+    <section class="conteiner-section-tela" id="conteiner">
+      <h1 id="conteiner-h1-criando-tela">CRIANDO TELA DE PONTO</h1>
+      <div class="conteiner-div-section-tela">
+        <!-- div com a header da tela -->
+        <div class="conteiner-header-horas" id="conteiner-header-horas">
+          <p id="conteiner-full-data">Quinta-feira, 17 julho de 2025</p>
+
+          <h2 id="conteiner-hora">10:20am</h2>
+          <p id="conteiner-fuso-horario">Fuso horario: Brasilia/São Paulo</p>
+        </div>
+        <!-- div com informações do usuario (img, nome, id) -->
+        <div class="conteiner-div-usuario">
+          <img src="./src/avatar-2.png" alt="usuario" id="foto-usuario" />
+          <h1 id="nome-usuario">Arthur Robson</h1>
+        </div>
+        <!-- div com interações de entrada e saída  -->
+        <div id="conteiner-div-checkin" class="conteiner-div-checkin">
+          <input
+            type="text"
+            name="justificativa"
+            id="input-justificativa"
+            placeholder="justificativa (Opcional)"
+          />
+          <button id="btn-entrada" class="btn-clock clock-in">Entrada</button>
+          <button id="btn-saida" class="btn-clock clock-out">Saída</button>
+        </div>
+        <!-- div com a opção de trocar usuario -->
+        <div
+          class="conteiner-div-trocar-usuario"
+          id="conteiner-div-trocar-usuario"
+        >
+          <p>você não é Arthur Robson?</p>
+          <a href="#">Clique aqui</a>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
