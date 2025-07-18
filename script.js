@@ -5,10 +5,16 @@ const fusoHorario = document.getElementById("conteiner-fuso-horario");
 
 //capturando botoes de clock-in/ clock-out
 const clockIn = document.getElementById("btn-entrada");
+const lunch = document.getElementById("btn-lunch");
 const clockOut = document.getElementById("btn-saida");
-console.log(clockOut);
+
+console.log(lunch);
+
+//capturando modal
+const modalLog = document.getElementById("modal-log");
 
 let funcionarioSelecionado = null; // variável global
+let emIntervalo = false; //var auxiliar
 //json com funcionarios
 fetch("./funcionarios.json")
   .then((resposta) => resposta.json())
@@ -70,6 +76,8 @@ function obterFusoHorario() {
 
 setInterval(atualizaDataHora, 1000);
 
+//eventos de registro clockIn
+
 clockIn.addEventListener("click", () => {
   if (!funcionarioSelecionado) return alert("Funcionário não carregado!");
 
@@ -78,18 +86,98 @@ clockIn.addEventListener("click", () => {
   const minutos = String(agora.getMinutes()).padStart(2, "0");
   const segundos = String(agora.getSeconds()).padStart(2, "0");
 
-  alert(
-    `Olá ${funcionarioSelecionado.nome}, entrada registrada às ${horas}:${minutos}:${segundos}`
-  );
+  const mensagemClockIn = `Olá <strong>${funcionarioSelecionado.nome}</strong>,  entrada registrada às <strong>${horas}:${minutos}:${segundos}</strong> <br />
+  Bom trabalho!`;
+
+  const mensagem = document.createElement("p");
+  mensagem.innerHTML = mensagemClockIn;
+
+  modalLog.innerText = "";
+
+  modalLog.appendChild(mensagem);
+
+  modalLog.style.display = "flex";
+
+  setTimeout(() => {
+    modalLog.style.display = "none";
+  }, 3000);
 });
 
+lunch.addEventListener("click", () => {
+  if (!funcionarioSelecionado) return alert("Funcionário não carregado!");
+
+  const agora = new Date();
+  const horas = String(agora.getHours()).padStart(2, "0");
+  const minutos = String(agora.getMinutes()).padStart(2, "0");
+  const segundos = String(agora.getSeconds()).padStart(2, "0");
+
+  if (!emIntervalo) {
+    //inicio do intervalo
+    const mensagemLunch = `Intervalo iniciado às ${horas}:${minutos}:${segundos} para ${funcionarioSelecionado.nome}`;
+
+    const mensagem = document.createElement("p");
+    mensagem.innerHTML = mensagemLunch;
+
+    modalLog.innerText = "";
+
+    modalLog.appendChild(mensagem);
+
+    modalLog.style.display = "flex";
+
+    setTimeout(() => {
+      modalLog.style.display = "none";
+    }, 3000);
+
+    lunch.textContent = "Finalizar intervalo";
+    lunch.classList.remove("lunch");
+    lunch.classList.add("fimLunch");
+  } else {
+    //fim do intervalo
+    const mensagemFimLunch = `Intervalo finalizado às ${horas}:${minutos}:${segundos} para ${funcionarioSelecionado.nome}`;
+
+    const mensagem = document.createElement("p");
+    mensagem.innerHTML = mensagemFimLunch;
+
+    modalLog.innerText = "";
+
+    modalLog.appendChild(mensagem);
+
+    modalLog.style.display = "flex";
+
+    setTimeout(() => {
+      modalLog.style.display = "none";
+    }, 3000);
+
+    lunch.textContent = "Finalizar intervalo";
+    lunch.classList.remove("fimLunch");
+    lunch.classList.add("lunch");
+  }
+
+  emIntervalo = !emIntervalo; //inverte o estado
+});
+
+//eventos de registro clockOut
 clockOut.addEventListener("click", () => {
   const agora = new Date();
   const horas = String(agora.getHours()).padStart(2, "0");
   const minutos = String(agora.getMinutes()).padStart(2, "0");
   const segundos = String(agora.getSeconds()).padStart(2, "0");
 
-  alert(`Saida registrada às ${horas}:${minutos}:${segundos}`);
+  const mensagemClockOut = `Olá <strong>${funcionarioSelecionado.nome}</strong>,  saída registrada às <strong>${horas}:${minutos}:${segundos}</strong><br />
+  Bom descanço!`;
+
+  const mensagem = document.createElement("p");
+  mensagem.innerHTML = mensagemClockOut;
+
+  modalLog.innerText = "";
+
+  modalLog.appendChild(mensagem);
+
+  modalLog.style.display = "flex";
+
+  setTimeout(() => {
+    modalLog.style.display = "none";
+  }, 3000);
 });
 
 atualizaDataHora();
