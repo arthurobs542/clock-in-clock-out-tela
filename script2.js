@@ -15,7 +15,7 @@ const modalLog = document.getElementById("modal-log");
 
 let funcionarioSelecionado = null; // variável global
 let emIntervalo = false; //var auxiliar
-//json com funcionarios
+//acessando json com funcionarios
 fetch("./funcionarios.json")
   .then((resposta) => resposta.json())
   .then((dados) => {
