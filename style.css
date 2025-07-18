@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #e3e3e3;
 }
 
 .conteiner-section-tela {
@@ -59,7 +60,7 @@ body {
 
 .conteiner-header-horas {
   width: 100%;
-  height: 300px;
+  height: 320px;
   padding: 2rem 1rem;
 
   display: flex;
@@ -67,7 +68,7 @@ body {
   align-items: center;
   gap: 10px;
 
-  padding-top: 70px;
+  padding-top: 40px;
 
   color: #fff;
   background-color: #4550dc;
@@ -82,13 +83,11 @@ body {
   transform: translateY(-50px);
   left: 0;
   right: 0;
-  margin: auto;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
 
   background-color: #fff;
   border-radius: 10px;
@@ -101,16 +100,22 @@ body {
   border-radius: 50%;
   border: #fff 7px solid;
   position: relative;
-  top: -50px;
+  transform: translateY(-50px);
 }
 
-.conteiner-div-usuario h1 {
+#nome-id-usuario {
   color: #6972f2;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
-  position: relative;
-  top: -30px;
+  transform: translateY(-20px);
+}
+
+#id-usuario {
+  color: #6972f2;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
 }
 
 .conteiner-div-checkin {
@@ -166,6 +171,7 @@ body {
 .conteiner-div-trocar-usuario a {
   color: #6972f2;
   text-decoration: none;
+  margin-bottom: 1rem;
 }
 .conteiner-div-trocar-usuario a:hover {
   text-decoration: underline;

@@ -1,0 +1,22 @@
+[
+  {
+    "foto": "./src/avatar-2.png",
+    "nome": "Arthur Robson",
+    "numero": 1111
+  },
+  {
+    "numero": 2222,
+    "nome": "Carlos Lima",
+    "foto": "./src/avatar-3.png"
+  },
+  {
+    "numero": 3333,
+    "nome": "Bruna Souza",
+    "foto": "./src/avatar-4.png"
+  },
+  {
+    "numero": 4444,
+    "nome": "Yasmim Genova",
+    "foto": "./src/avatar-5.png"
+  }
+]
