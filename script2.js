@@ -8,6 +8,8 @@ const clockIn = document.getElementById("btn-entrada");
 const lunch = document.getElementById("btn-lunch");
 const clockOut = document.getElementById("btn-saida");
 
+const trocarUsuario = document.getElementById("trocar-usuario");
+
 console.log(lunch);
 
 //capturando modal
@@ -15,23 +17,25 @@ const modalLog = document.getElementById("modal-log");
 
 let funcionarioSelecionado = null; // variável global
 let emIntervalo = false; //var auxiliar
+
 //acessando json com funcionarios
-fetch("./funcionarios.json")
-  .then((resposta) => resposta.json())
-  .then((dados) => {
-    // A variável 'dados' é um array de funcionários
-    const funcionario = dados[0]; // Exibe o primeiro, por exemplo
 
-    funcionarioSelecionado = funcionario; // <-- CORREÇÃO AQUI ✅
+const funcionarioLogado = JSON.parse(localStorage.getItem("funcionarioLogado"));
 
-    // Atualiza os elementos na tela
-    document.getElementById("foto-usuario").src = funcionario.foto;
-    document.getElementById("nome-usuario").textContent = funcionario.nome;
-    document.getElementById(
-      "id-usuario"
-    ).textContent = `id: ${funcionario.numero}`;
-  })
-  .catch((erro) => console.error("Erro ao carregar JSON:", erro));
+if (funcionarioLogado) {
+  funcionarioSelecionado = funcionarioLogado;
+
+  document.getElementById("foto-usuario").src = funcionarioLogado.foto;
+  document.getElementById("nome-usuario").textContent = funcionarioLogado.nome;
+  document.getElementById(
+    "id-usuario"
+  ).textContent = `id: ${funcionarioLogado.numero}`;
+  document.getElementById(
+    "trocar-usuario"
+  ).textContent = `você não é ${funcionarioLogado.nome} ?`;
+} else {
+  window.location.href = "login.html";
+}
 
 //exibe data e  horas no relogio do sistema
 function atualizaDataHora() {

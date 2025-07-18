@@ -28,10 +28,16 @@ btnEntrar.addEventListener("click", (event) => {
         return;
       }
 
-      funcionarioSelecionado = funcionario;
+      if (funcionario) {
+        funcionarioSelecionado = funcionario;
+        localStorage.setItem("funcionarioLogado", JSON.stringify(funcionario));
+        window.location.href = "index.html";
+      }
+
+      // funcionarioSelecionado = funcionario;
 
       // Aqui você pode atualizar a UI com os dados do funcionário, ex:
-      window.location.href = "index.html";
+      // window.location.href = "index.html";
     })
     .catch((erro) => {
       console.error("Erro ao carregar JSON:", erro);
